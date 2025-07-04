@@ -42,10 +42,14 @@
       gap: 20px;
     }
     .card {
-      background: #fff;
       padding: 20px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
       border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cardHalfBackground  {
+      background: linear-gradient(to right, rgba(211, 84, 0, 0.12) 50%, #fff 50%);
     }
     h2 {
       text-align: center;
@@ -162,15 +166,15 @@
   <section>
     <h2>Services</h2>
     <div class="services">
-      <div class="card">
+      <div class="card cardHalfBackground">
         <h3>Private Dining</h3>
         <p>Enjoy a gourmet meal in the comfort of your home, crafted to your taste.</p>
       </div>
-      <div class="card">
+      <div class="card cardHalfBackground">
         <h3>Event Catering</h3>
         <p>Perfect for birthdays, anniversaries, or corporate events with custom menus.</p>
       </div>
-      <div class="card">
+      <div class="card cardHalfBackground">
         <h3>Meal Planning</h3>
         <p>Healthy, delicious weekly meal preps tailored to your dietary goals.</p>
       </div>
@@ -215,8 +219,9 @@
     <h2>Contact Me</h2>
     <form class="contact-form">
       <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea rows="5" placeholder="Tell me about your event..." required></textarea>
+      <input type="number" placeholder="Your contact number" required />
+      <input type="date" placeholder="Event Date" required />
+      <textarea rows="5" placeholder="Tell me about your event and contact information..." required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
