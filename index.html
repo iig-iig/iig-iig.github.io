@@ -5,54 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Croos Automotive</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-    header { background: #000; color: #fff; padding: 20px; text-align: center; }
-    nav { background: #333; padding: 10px; text-align: center; }
-    nav a { color: #fff; margin: 0 15px; text-decoration: none; }
-    section { padding: 40px 20px; max-width: 900px; margin: auto; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-    .gallery img { width: 100%; border-radius: 8px; }
-    footer { background: #000; color: #fff; text-align: center; padding: 20px; margin-top: 40px; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background:#f4f6fa; color:#222; }
+    header { background: #0a1a3c; color: #fff; padding: 50px 20px; text-align: center; }
+    nav { background: #10264d; padding: 15px; text-align: center; position: sticky; top: 0; }
+    nav a { color: #fff; margin: 0 20px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    section { padding: 60px 20px; max-width: 1100px; margin: auto; }
+    h2 { color: #0a1a3c; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .gallery img { width: 100%; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    footer { background: #0a1a3c; color: #fff; text-align: center; padding: 25px; margin-top: 60px; }
+    form { background:#fff; padding:25px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.15); }
+    input, textarea { width:100%; padding:12px; margin:10px 0; border-radius:6px; border:1px solid #ccc; }
+    button { background:#0a1a3c; color:#fff; padding:12px 20px; border:none; border-radius:6px; cursor:pointer; font-size:16px; }
+    button:hover { background:#153b7a; }
+    iframe { width:100%; border:0; border-radius:10px; margin-top:20px; }
   </style>
 </head>
 <body>
   <header>
     <h1>Croos Automotive</h1>
-    <p>BMW Specialist Mechanic with 15+ Years Experience</p>
+    <p>BMW Specialist Mechanic with 15+ Years of Experience</p>
   </header>
 
   <nav>
     <a href="#about">About</a>
     <a href="#services">Services</a>
     <a href="#gallery">Gallery</a>
+    <a href="#booking">Booking</a>
     <a href="#contact">Contact</a>
   </nav>
 
   <section id="about">
     <h2>About Croos Automotive</h2>
-    <p>With over 15 years of experience in the automobile industry, Croos Automotive specializes in BMW repair and maintenance. Although BMW is our main focus, we provide expert service for all other makes and models as well. Our mission is to offer reliable, high‑quality automotive care with honesty and professionalism.</p>
+    <p>Croos Automotive brings over 15 years of hands‑on experience in the automobile industry. We specialize in BMW diagnostics, repairs, and maintenance, but our expertise extends to all vehicle brands. We pride ourselves on honesty, precision, and delivering premium automotive care.</p>
   </section>
 
   <section id="services">
     <h2>Our Services</h2>
     <ul>
-      <li>BMW Diagnostics & Repairs</li>
-      <li>General Vehicle Servicing</li>
-      <li>Engine & Transmission Repairs</li>
-      <li>Brake & Suspension Work</li>
-      <li>Electrical Fault Finding</li>
-      <li>Logbook Services for All Brands</li>
+      <li>BMW Diagnostics & Repair</li>
+      <li>Engine & Transmission Work</li>
+      <li>Electrical Fault Analysis</li>
+      <li>Brake & Suspension Repairs</li>
+      <li>General Car Servicing</li>
+      <li>Logbook Services (All Makes)</li>
     </ul>
   </section>
 
   <section id="gallery">
     <h2>Photo Gallery</h2>
     <div class="gallery">
-      <img src="https://via.placeholder.com/400x250?text=BMW+Repair+1" alt="Gallery Image 1" />
-      <img src="https://via.placeholder.com/400x250?text=Workshop" alt="Gallery Image 2" />
-      <img src="https://via.placeholder.com/400x250?text=Diagnostics" alt="Gallery Image 3" />
-      <img src="https://via.placeholder.com/400x250?text=Engine+Work" alt="Gallery Image 4" />
+      <img src="https://images.unsplash.com/photo-1617469767053-5ec77c3c1c14" />
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70" />
+      <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023" />
+      <img src="https://images.unsplash.com/photo-1519589487392-df82f31c2d9c" />
     </div>
+  </section>
+
+  <section id="booking">
+    <h2>Book a Service</h2>
+    <form>
+      <label>Name</label>
+      <input type="text" placeholder="Your Name" required />
+
+      <label>Phone</label>
+      <input type="text" placeholder="Your Phone Number" required />
+
+      <label>Car Model</label>
+      <input type="text" placeholder="BMW / Other Model" required />
+
+      <label>Message</label>
+      <textarea placeholder="Describe the issue or service needed" rows="5"></textarea>
+
+      <button type="submit">Submit Booking Request</button>
+    </form>
   </section>
 
   <section id="contact">
@@ -60,6 +87,13 @@
     <p><strong>Phone:</strong> 0400 000 000</p>
     <p><strong>Email:</strong> croos@automotive.com</p>
     <p><strong>Address:</strong> Melbourne, Victoria</p>
+
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345099875!2d144.95565131561644!3d-37.81732774201459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ5JzAyLjQiUyAxNDTCsDU3JzIyLjAiRQ!5e0!3m2!1sen!2sau!4v1614123456789"
+      height="300"
+      allowfullscreen=""
+      loading="lazy"
+    ></iframe>
   </section>
 
   <footer>
