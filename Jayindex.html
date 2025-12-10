@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay's Cuisine | Catering</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #e67e22;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #e67e22;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background: #d35400;
+            transform: translateY(-3px);
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .logo img {
+            height: 120px;
+            width: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.12);
+            background: #fff;
+            transition: height 0.3s, width 0.3s;
+        }
+        header {
+            transition: padding 0.3s, box-shadow 0.3s;
+        }
+        header.large {
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        header.small {
+            padding: 0.4rem 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        header.small .logo img {
+            height: 60px;
+            width: 60px;
+        }
+        
+        /* Navigation container */
+        .nav-bar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navigation links */
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 50px;
+            padding: 14px 0;
+            margin-left: 35%;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #1c1e21;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background-color: #e4e6eb;
+            color: #050505;
+        }
+
+        /* Hero Section */
+        #home {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 8rem 0;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* About Section */
+        #about {
+            background: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Dishes Section */
+        #dishes {
+            background: #f5f5f5;
+        }
+        
+        .dishes-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .dish {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .dish:hover {
+            transform: translateY(-10px);
+        }
+        
+        .dish-image {
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            overflow: hidden;
+        }
+        
+        .dish-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .dish-info {
+            padding: 1.5rem;
+        }
+        
+        .dish-info h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Reviews Section */
+        #reviews {
+            background: white;
+        }
+        
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .review {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .review:before {
+            content: '"';
+            font-size: 5rem;
+            color: #e67e22;
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            line-height: 1;
+        }
+        
+        .reviewer {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .reviewer-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            overflow: hidden;
+        }
+        
+        .reviewer-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .rating {
+            color: #e67e22;
+            margin-top: 0.5rem;
+        }
+        
+        /* Menu Section */
+        #menu {
+            background: #f5f5f5;
+        }
+        
+        .menu-items {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .menu-category {
+            margin-bottom: 3rem;
+        }
+        
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .item-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .item-price {
+            color: #e67e22;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .item-desc {
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+        
+        /* Contact Section */
+        #contact {
+            background: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: #e67e22;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #e67e22;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                text-align: center;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #2c3e50;
+                padding: 1rem 0;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                color: white;
+                cursor: pointer;
+            }
+        }
+
+        /* Menu Spinner Styles */
+        .menu-spinner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+        }
+        .spinner-arrow {
+            background: #e67e22;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .spinner-arrow:hover {
+            background: #d35400;
+        }
+        .spinner-image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .spinner-info {
+            text-align: center;
+            margin-top: 1.2rem;
+        }
+        @media (max-width: 600px) {
+            .menu-spinner {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .spinner-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+            .spinner-image-container img {
+                width: 90vw;
+                max-width: 95vw;
+                height: 160px;
+            }
+        }
+
+        .spinner-image-multi-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        .spinner-images-row {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: stretch;
+        }
+        .spinner-menu-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem 1rem 1.5rem 1rem;
+        }
+        .spinner-menu-card img {
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .spinner-menu-card .spinner-info {
+            text-align: center;
+        }
+        @media (max-width: 1100px) {
+            .spinner-images-row {
+                gap: 0.7rem;
+            }
+            .spinner-menu-card {
+                width: 160px;
+            }
+            .spinner-menu-card img {
+                width: 140px;
+                height: 90px;
+            }
+        }
+        @media (max-width: 700px) {
+            .spinner-images-row {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            .spinner-menu-card {
+                width: 90vw;
+                max-width: 95vw;
+            }
+            .spinner-menu-card img {
+                width: 90vw;
+                max-width: 95vw;
+                height: 120px;
+            }
+        }
+
+        .menu-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .menu-popup-content {
+            position: relative;
+            background: rgba(255,255,255,0.95);
+            border-radius: 18px;
+            padding: 2rem 2rem 1.5rem 2rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 90vw;
+            max-height: 90vh;
+        }
+        .menu-popup-content img {
+            max-width: 70vw;
+            max-height: 60vh;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(44,62,80,0.18);
+        }
+        .menu-popup-close {
+            position: absolute;
+            top: 10px;
+            right: 18px;
+            background: #e67e22;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.12);
+            transition: background 0.2s;
+        }
+        .menu-popup-close:hover {
+            background: #d35400;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div >
+            <nav class="nav-bar">
+                <div class="logo">
+                    <img src="./Images/Logo/jays cuisine 3.png" alt="Jay's Cuisine Logo">
+                </div>
+                
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#dishes">Dishes</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+
+                <!-- <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#dishes">Dishes</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul> -->
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Masterful Cuisine Crafted With Passion</h1>
+                <p>Experience the art of fine dining with our award-winning chef specializing in fusion cuisine that delights all senses.</p>
+                <a href="#menu" class="btn">View Our Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Our Chef</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>With over 15 years of culinary experience trained in Paris and Australia, Chef Jay brings a unique fusion of French techniques and Sri Lankan and European flavors to create unforgettable dining experiences.</p>
+                    <p>His philosophy centers on using the freshest seasonal ingredients to create dishes that are both visually stunning and exceptionally delicious.</p>
+                    <p>After working at several Jayin-starred restaurants across Europe and Asia, Chef Jay decided to bring his expertise to create a dining experience that combines sophistication with approachable flavors.</p>
+                    <a href="#menu" class="btn" style="margin-top: 1.5rem;">View Menus</a>
+                </div>
+                <div class="about-image">
+                    <img src="./Images/Logo/Jay.png" alt="Chef Jay">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dishes Section -->
+    <section id="dishes">
+        <div class="container">
+            <h2>Our Signature Dishes</h2>
+            <p class="dishes-intro">Feast your eyes on some of our most popular dishes, each crafted with precision and passion.</p>
+            
+            <div class="gallery">
+                <div class="dish">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Seared Scallops">
+                    </div>
+                    <div class="dish-info">
+                        <h3>Seared Scallops</h3>
+                        <p>Perfectly seared scallops with cauliflower purée and truffle oil</p>
+                    </div>
+                </div>
+                <div class="dish">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Beef Wellington">
+                    </div>
+                    <div class="dish-info">
+                        <h3>Beef Wellington</h3>
+                        <p>Prime beef tenderloin wrapped in puff pastry with mushroom duxelles</p>
+                    </div>
+                </div>
+                <div class="dish">
+                    <div class="dish-image">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Matcha Tiramisu">
+                    </div>
+                    <div class="dish-info">
+                        <h3>Matcha Tiramisu</h3>
+                        <p>Japanese-inspired twist on the classic Italian dessert</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <p class="dishes-intro">We take pride in creating memorable experiences for our guests. Here's what they have to say.</p>
+            
+            <div class="reviews-container">
+                <div class="review">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe">
+                        </div>
+                        <div>
+                            <h3>John Doe</h3>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"The dining experience was exceptional from start to finish. The scallops were perfectly cooked, and the matcha tiramisu was unlike anything I've ever tasted. Will definitely be returning!"</p>
+                </div>
+                
+                <div class="review">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Miller">
+                        </div>
+                        <div>
+                            <h3>Sarah Miller</h3>
+                            <div class="rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>"Chef Jay's fusion cuisine is truly innovative. Each dish was a perfect balance of flavors and textures. The service was impeccable, and the ambiance was perfect for our anniversary celebration."</p>
+                </div>
+                
+                <div class="review">
+                    <div class="reviewer">
+                        <div class="reviewer-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Robert Johnson">
+                        </div>
+                        <div>
+                            <h3>Robert Johnson</h3>
+                            <div class="rating">★★★★☆</div>
+                        </div>
+                    </div>
+                    <p>"The Beef Wellington was cooked to perfection. While some dishes were quite avant-garde, the classic preparations were executed flawlessly. Wine pairing suggestions were excellent."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <div class="container">
+            <h2>Our Menu</h2>
+            <p class="dishes-intro">Featuring seasonal ingredients sourced from local producers. Menus may change based on availability.</p>
+            <div class="menu-spinner">
+                <button class="spinner-arrow" id="menu-prev" aria-label="Previous menu items">&#8592;</button>
+                <div class="spinner-image-multi-container">
+                    <div id="menu-images-row" class="spinner-images-row"></div>
+                </div>
+                <button class="spinner-arrow" id="menu-next" aria-label="Next menu items">&#8594;</button>
+            </div>
+            <div id="menu-popup" class="menu-popup" style="display:none;">
+                <div class="menu-popup-content">
+                    <button id="menu-popup-close" class="menu-popup-close">&times;</button>
+                    <img id="menu-popup-img" src="" alt="Menu Item" />
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p class="dishes-intro">We'd love to hear from you. We would love to serve you, the way you wanted to be served.</p>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h3>Location</h3>
+                            <p>123 Gourmet Avenue, Culinary District, New York, NY 10001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>Hours</h3>
+                            <p>Tuesday - Thursday: 5:00 PM - 10:00 PM<br>
+                            Friday - Saturday: 5:00 PM - 11:00 PM<br>
+                            Sunday: 5:00 PM - 9:00 PM<br>
+                            Monday: Closed</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>Reservations</h3>
+                            <p>Phone: (212) 555-7890<br>
+                            Email: reservations@JayCuisine.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" placeholder="What is this regarding?">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="Type your message here" required></textarea>
+                        </div>
+                        
+                        <button type="submit" disabled class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo">Jay's Cuisine</div>
+            <p>Fine service with a creative fusion twist</p>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-tripadvisor"></i></a>
+            </div>
+            
+            <p>&copy; 2023 Jay's Cuisine. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header shrink on scroll
+        function handleHeaderResize() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 30) {
+                header.classList.remove('large');
+                header.classList.add('small');
+            } else {
+                header.classList.remove('small');
+                header.classList.add('large');
+            }
+        }
+        window.addEventListener('scroll', handleHeaderResize);
+        window.addEventListener('DOMContentLoaded', handleHeaderResize);
+        // Menu Spinner Functionality
+        const menuItems = [
+            {
+                name: "Seared Scallops",
+                desc: "With cauliflower purée, truffle oil, and microgreens",
+                price: "$18",
+                img: "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Foie Gras",
+                desc: "With brioche, fig compote, and port reduction",
+                price: "$24",
+                img: "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Tuna Tartare",
+                desc: "With avocado, sesame oil, and wonton crisps",
+                price: "$16",
+                img: "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Beef Wellington",
+                desc: "Prime beef tenderloin, mushroom duxelles, puff pastry",
+                price: "$42",
+                img: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Herb-Crusted Lamb",
+                desc: "Rack of lamb with rosemary-thyme crust, red wine reduction",
+                price: "$38",
+                img: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Miso-Glazed Sea Bass",
+                desc: "With shiitake mushrooms and bok choy",
+                price: "$32",
+                img: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Matcha Tiramisu",
+                desc: "Green tea twist on the classic Italian dessert",
+                price: "$12",
+                img: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Chocolate Soufflé",
+                desc: "With vanilla bean ice cream",
+                price: "$14",
+                img: "https://images.unsplash.com/photo-1504674900247-ec6b0b1b798e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            },
+            {
+                name: "Seasonal Fruit Plate",
+                desc: "With yuzu honey and mint",
+                price: "$10",
+                img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+            }
+        ];
+        let menuIndex = 0;
+        const menuImagesRow = document.getElementById('menu-images-row');
+        const ITEMS_PER_VIEW = 4;
+        function updateMenuSpinner() {
+            menuImagesRow.innerHTML = '';
+            for (let i = 0; i < ITEMS_PER_VIEW; i++) {
+                const idx = (menuIndex + i) % menuItems.length;
+                const item = menuItems[idx];
+                const card = document.createElement('div');
+                card.className = 'spinner-menu-card';
+                card.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="spinner-info">
+                        <h3>${item.name}</h3>
+                        <div class="item-desc">${item.desc}</div>
+                        <div class="item-price">${item.price}</div>
+                    </div>
+                `;
+                card.style.cursor = 'pointer';
+                card.onclick = function() {
+                    document.getElementById('menu-popup-img').src = item.img;
+                    document.getElementById('menu-popup-img').alt = item.name;
+                    document.getElementById('menu-popup').style.display = 'flex';
+                };
+                menuImagesRow.appendChild(card);
+            }
+        }
+        document.getElementById('menu-prev').onclick = function() {
+            menuIndex = (menuIndex - ITEMS_PER_VIEW + menuItems.length) % menuItems.length;
+            updateMenuSpinner();
+        };
+        document.getElementById('menu-next').onclick = function() {
+            menuIndex = (menuIndex + ITEMS_PER_VIEW) % menuItems.length;
+            updateMenuSpinner();
+        };
+        // Optionally, allow arrow keys for navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') document.getElementById('menu-prev').click();
+            if (e.key === 'ArrowRight') document.getElementById('menu-next').click();
+        });
+        // Initialize spinner on page load
+        updateMenuSpinner();
+        // Popup close logic
+        document.getElementById('menu-popup-close').onclick = function() {
+            document.getElementById('menu-popup').style.display = 'none';
+        };
+        document.getElementById('menu-popup').onclick = function(e) {
+            if (e.target === this) this.style.display = 'none';
+        };
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
