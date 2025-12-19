@@ -173,9 +173,71 @@ header.shrink nav ul li a {
 .contact .row svg { width:18px; height:18px; flex:0 0 18px; margin-top:2px; color:#333; }
 .contact .row .text { font-size:15px; color:#222; }
 
+</style>
+
+<!-- Responsive styles -->
+<style>
 @media (max-width: 900px) {
+    /* header smaller */
+    header { height: 80px; padding: 0 20px; }
+    header.shrink { height: 55px; padding: 0 16px; }
+
+    /* navigation stacks */
+    nav ul { gap: 14px; }
+    nav ul li { margin-left: 18px; }
+    nav ul li a { font-size: 16px; }
+
+    /* hero adapts */
+    .hero { height: 70vh; margin-top: 80px; }
+    .hero-left { display: none; }
+    .hero-right { padding: 28px; }
+    .hero-right h1 { font-size: 36px; }
+
+    /* social ribbon */
+    .social-ribbon { padding: 10px 0; }
+    .social-ribbon .icons { gap: 12px; }
+
+    /* about section stacks with smaller padding */
     .about { flex-direction: column; padding: 40px; }
+    .about .map { min-height: 260px; }
+
+    /* extra content padding */
+    .section { padding: 60px 24px; height: auto; }
 }
+
+@media (max-width: 480px) {
+    /* header compact */
+    header { height: 70px; padding: 0 14px; }
+    header.shrink { height: 50px; padding: 0 12px; }
+
+    /* nav: wrap to multiple lines and center */
+    nav { margin-left: 0; }
+    nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 8px; }
+    nav ul li { margin-left: 0; }
+    nav ul li a { font-size: 14px; }
+
+    /* hero for small phones */
+    .hero { height: 60vh; margin-top: 70px; }
+    .hero-right { padding: 18px; }
+    .hero-right h1 { font-size: 26px; line-height: 1.15; }
+
+    /* social ribbon smaller */
+    .social-ribbon { padding: 8px 0; }
+    .social-ribbon a { width: 32px; height: 32px; }
+    .social-ribbon svg { width: 18px; height: 18px; }
+
+    /* About adjustments */
+    .about { padding: 20px; gap: 18px; }
+    .about .map { min-height: 200px; }
+    .about .details .what, .about .details .contact { padding: 16px; }
+
+    /* contact rows smaller text */
+    .contact .row .text { font-size: 14px; }
+
+    /* general section spacing */
+    .section { padding: 36px 16px; height: auto; }
+}
+</style>
 </style>
 
 </head>
