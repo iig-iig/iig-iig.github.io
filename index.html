@@ -99,6 +99,9 @@ header.shrink nav ul li a {
     line-height: 1.2;
 }
 
+/* active nav link */
+.nav-link.active { border-bottom: 2px solid #fff; padding-bottom: 4px; }
+
 /* EXTRA SECTION (SCROLL DEMO) */
 .section {
     height: 100vh;
@@ -304,16 +307,16 @@ body {
 
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Work We Do</a></li>
-            <li><a href="#">Partners</a></li>
+            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#about-us" class="nav-link">About Us</a></li>
+            <li><a href="#work" class="nav-link">Work We Do</a></li>
+            <li><a href="#partners" class="nav-link">Partners</a></li>
         </ul>
     </nav>
 </header>
 
 <!-- HERO SECTION -->
-<section class="hero" style="background-image: url('Images/landing.png');">
+<section id="home" class="hero" style="background-image: url('Images/landing.png');">
     <div class="hero-left">
       </div>
 
@@ -412,8 +415,8 @@ body {
 </section>
 
 
-<!-- EXTRA CONTENT -->
-<section class="section" style="height: auto;">
+<!-- WORK SECTION (example) -->
+<section id="work" class="section" style="height: auto;">
     
 <!-- Photo Grid -->
 <div class="row"> 
@@ -518,6 +521,41 @@ window.addEventListener("scroll", function() {
     .footer-right { margin-top:12px; }
 }
 </style>
+
+<script>
+// Smooth scroll for nav links
+document.querySelectorAll('a.nav-link').forEach(link => {
+    link.addEventListener('click', function(e){
+        e.preventDefault();
+        const targetId = this.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+            const headerOffset = document.getElementById('header').offsetHeight;
+            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - headerOffset + 8;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+    });
+});
+
+// Highlight nav links when section in view
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('a.nav-link');
+
+const observerOptions = { root: null, rootMargin: '0px 0px -40% 0px', threshold: 0 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const link = document.querySelector('a.nav-link[href="#' + id + '"]');
+        if (entry.isIntersecting) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            if (link) link.classList.add('active');
+        }
+    });
+}, observerOptions);
+
+sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
