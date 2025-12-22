@@ -65,6 +65,20 @@ nav ul li a {
     transition: font-size 0.3s ease;
 }
 
+/* NAV TOGGLE (hamburger) */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 12px;
+}
+.nav-toggle .bar { display:block; width:22px; height:3px; background:#fff; margin:4px 0; transition: transform .2s ease, opacity .2s ease; }
+.nav-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open .bar:nth-child(2) { opacity: 0; }
+.nav-toggle.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 header.shrink nav ul li a {
     font-size: 16px;
 }
@@ -218,7 +232,7 @@ header.shrink nav ul li a {
     nav ul li a { font-size: 14px; }
 
     /* hero for small phones */
-    .hero { height: 36vh; margin-top: 70px; }
+    .hero { height: 30vh; margin-top: 70px; }
     .hero-right { padding: 18px; }
     .hero-right h1 { font-size: 26px; line-height: 1.15; }
 
@@ -327,6 +341,86 @@ body {
     .neon-container { display: grid; }
      .neon-text { font-size: 1.4rem; }
 }
+
+
+
+/* car brand slider */
+
+.slider_container {
+  position: relative;
+  /* width: 60%;
+  height: 40rem; */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  height: 90px;
+}
+.slider {
+  position: relative;
+  /* width = number_of_slides * 100% (3 slides -> 300%) */
+  width: 300%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  animation: 10s cubic-bezier(1, 0.95, 0.365, 1) sliding infinite;
+}
+.slide {
+  position: relative;
+  min-width: 100%;
+  height: 100%;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+}
+.slide .caption {
+  position: absolute;
+  left: 0;
+  bottom: 5%;
+  font-size: 5rem;
+  font-weight: 600;
+  color: white;
+  text-transform: capitalize;
+  background: rgba(0, 0, 0, 0.348);
+  backdrop-filter: blur(10px);
+  padding: 1rem 5rem;
+  border-radius: 0 2rem 2rem 0;
+}
+.slide.one {
+  background: rgb(182, 19, 109);
+}
+.slide.two {
+  background: rgb(255, 64, 64);
+}
+ .slide.three {
+  background: rgb(11, 173, 188);
+}/*
+.slide.four {
+  background: rgb(11, 188, 14);
+}
+.slide.five {
+  background: rgb(173, 11, 188);
+} */
+@keyframes sliding {
+  0% {
+    transform: translateX(0%);
+  }
+  /* For 3 slides we only need to move from 0% -> -100% -> -200% */
+  0%, 30% {
+    transform: translateX(0%);
+  }
+  33%, 66% {
+    transform: translateX(-100%);
+  }
+  69%, 100% {
+    transform: translateX(-200%);
+  }
+}
+
+
 </style>
 
 </head>
@@ -350,7 +444,12 @@ body {
             <li><a href="#partners" class="nav-link">Partners</a></li>
         </ul>
     </nav>
-</header>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </header>
 
 <!-- HERO SECTION -->
 <section id="home" class="hero" style="background-image: url('Images/landing.png');">
@@ -461,6 +560,22 @@ body {
     </div>
 </section>
 
+<hr>
+
+<section class="slider_container">
+      <section class="slider">
+        <div class="slide one">
+          <img src="Images/carBrands/carBrands1.jpg" alt="" />
+        </div>
+        <div class="slide two">
+          <img src="Images/carBrands/carBrands2.jpg" alt="" />
+        </div>
+         <div class="slide three">
+          <img src="Images/carBrands/carBrands2.jpg" alt="" />
+        </div>
+      </section>
+    </section>
+
 
 <!-- WORK SECTION (example) -->
 <section id="work" class="section" style="height: auto;">
@@ -468,36 +583,36 @@ body {
 <!-- Photo Grid -->
 <div class="row"> 
   <div class="column">
-    <img src="https://www.w3schools.com/w3images/wedding.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/rocks.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/falls2.jpg" style="width:100%">
+    <img src="Images/galary/1.png" style="width:100%">
+    <img src="Images/galary/2.png" style="width:100%">
+    <img src="Images/galary/3.png" style="width:100%">
     <!-- <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/nature.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/mist.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%"> -->
   </div>
   <div class="column">
-    <img src="https://www.w3schools.com/w3images/underwater.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/ocean.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/wedding.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/mountainskies.jpg" style="width:100%">
+    <img src="Images/galary/4.png" style="width:100%">
+    <img src="Images/galary/5.png" style="width:100%">
+    <img src="Images/galary/6.png" style="width:100%">
     <!-- <img src="https://www.w3schools.com/w3images/rocks.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/underwater.jpg" style="width:100%"> -->
   </div>  
   <div class="column">
-    <img src="https://www.w3schools.com/w3images/wedding.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/rocks.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/falls2.jpg" style="width:100%">
+    <img src="Images/galary/8.png" style="width:100%">
+    <img src="Images/galary/9.png" style="width:100%">
+    <img src="Images/galary/10.png" style="width:100%">
+    <img src="Images/galary/7.png" style="width:100%">
     <!-- <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/nature.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/mist.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%"> -->
   </div>
   <div class="column">
-    <img src="https://www.w3schools.com/w3images/underwater.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/ocean.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/wedding.jpg" style="width:100%">
-    <img src="https://www.w3schools.com/w3images/mountainskies.jpg" style="width:100%">
+    <img src="Images/galary/11.png" style="width:100%">
+    <img src="Images/galary/12.png" style="width:100%">
+    <img src="Images/galary/13.png" style="width:100%">
+    <img src="Images/galary/14.png" style="width:100%">
     <!-- <img src="https://www.w3schools.com/w3images/rocks.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/underwater.jpg" style="width:100%"> -->
   </div>
@@ -570,22 +685,53 @@ window.addEventListener("scroll", function() {
     .footer-inner { flex-direction:column; align-items:center; text-align:center; }
     .footer-right { margin-top:12px; }
 }
+
+</style>
+
+<!-- Mobile nav styles and toggle behavior -->
+<style>
+@media (max-width: 700px) {
+    .nav-toggle { display: block; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 1200; }
+    header nav { display: none; position: absolute; right: 12px; top: 100%; background: rgba(0,0,0,0.9); padding: 12px 16px; border-radius: 8px; z-index: 1100; }
+    header nav.open { display: block; }
+    header nav ul { flex-direction: column; }
+    header nav ul li { margin-left: 0; margin-bottom: 8px; }
+}
 </style>
 
 <script>
+// Mobile nav toggle
+(function(){
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('header nav');
+    if (navToggle && nav) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('open');
+            navToggle.classList.toggle('open', isOpen);
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+        // Close nav when a link is clicked
+        nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+            nav.classList.remove('open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded','false');
+        }));
+    }
+})();
+
 // Smooth scroll for nav links
 document.querySelectorAll('a.nav-link').forEach(link => {
-    link.addEventListener('click', function(e){
-        e.preventDefault();
-        const targetId = this.getAttribute('href').slice(1);
-        const target = document.getElementById(targetId);
-        if (target) {
-            const headerOffset = document.getElementById('header').offsetHeight;
-            const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementPosition - headerOffset + 8;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        }
-    });
+        link.addEventListener('click', function(e){
+                e.preventDefault();
+                const targetId = this.getAttribute('href').slice(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                        const headerOffset = document.getElementById('header').offsetHeight;
+                        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset + 8;
+                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+        });
 });
 
 // Highlight nav links when section in view
@@ -594,14 +740,14 @@ const navLinks = document.querySelectorAll('a.nav-link');
 
 const observerOptions = { root: null, rootMargin: '0px 0px -40% 0px', threshold: 0 };
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        const id = entry.target.getAttribute('id');
-        const link = document.querySelector('a.nav-link[href="#' + id + '"]');
-        if (entry.isIntersecting) {
-            navLinks.forEach(l => l.classList.remove('active'));
-            if (link) link.classList.add('active');
-        }
-    });
+        entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const link = document.querySelector('a.nav-link[href="#' + id + '"]');
+                if (entry.isIntersecting) {
+                        navLinks.forEach(l => l.classList.remove('active'));
+                        if (link) link.classList.add('active');
+                }
+        });
 }, observerOptions);
 
 sections.forEach(section => observer.observe(section));
