@@ -145,14 +145,14 @@ header.shrink nav ul li a {
     background: #ffffff;
 }
 .about .map {
-    flex: 1 1 50%;
+    flex: 1 1 100%;
     min-height: 320px;
     background: #e9e9e9;
     border-radius: 8px;
     overflow: hidden;
 }
 .about .details {
-    flex: 1 1 50%;
+    flex: 1 1 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -292,6 +292,40 @@ body {
     max-width: 100%;
   }
 }
+
+.neon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-left: 100px;
+}
+
+.neon-text {
+    font-size: 4rem;
+    color: #fff;
+    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+    }
+    100% {
+        text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
+    }
+}
+@media (max-width: 900px) {
+    .neon-container { margin-left: 20px; }
+    .neon-text { font-size: 1.7rem; }
+}
+
+@media (max-width: 480px) {
+    /* hide neon on very small screens to avoid header overlap */
+    .neon-container { display: grid; }
+     .neon-text { font-size: 1.4rem; }
+}
 </style>
 
 </head>
@@ -304,7 +338,9 @@ body {
         <!-- Replace logo.png with your logo -->
         <img src="Images/Logo/croos_logo.jpg" alt="Logo">
     </div>
-
+<div class="neon-container">
+    <h1 class="neon-text">0481 972 097</h1>
+</div>
     <nav>
         <ul>
             <li><a href="#home" class="nav-link">Home</a></li>
@@ -377,39 +413,49 @@ body {
     </div>
 
     <div class="details">
-        <div class="what">
+        <div class="contact">
+            <h3>Contact & Opening Hours</h3>
+            <div class="row"></div>
+            
+            <div class="row"></div>
+            <div class="row">
+                <!-- address icon -->
+                <div class="text"> <p>
+                <svg viewBox="0 0 24 24" fill="#e91717" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+                <strong>  Unit 1, 6 Bramley Street, Dandenong, VIC, Australia, Victoria</strong></div>
+           </p> </div>
+
+            <div class="row"></div>
+            <div class="row">
+                <!-- phone icon -->
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C9.16 21 3 14.84 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z"/></svg>
+                <div class="text"><a href="tel:0481972097">0481 972 097</a></div>
+                <br>
+            </div>
+
+            <div class="row"></div>
+            <div class="row">
+                <!-- hours icon -->
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 1a11 11 0 1011 11A11.013 11.013 0 0012 1zm1 12.59V7a1 1 0 10-2 0v6a1 1 0 00.29.71l3 3a1 1 0 001.41-1.41z"/></svg>
+                <div class="text">
+                    <strong>Opening Hours</strong><p><br></p>
+                    <div>Monday - Friday: 8:00 AM – 5:00 PM</div><br>
+                    <div>Saturday: 9:00 AM – 1:00 PM</div><br>
+                    <div>Sunday: Closed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div>
+      <div class="what">
             <h2>About Us</h2>
             <p>
                 Our mechanics specialise in vehicle diagnostics, servicing and repairs, performance tuning, and electrical work.
                 We handle scheduled maintenance, brake and suspension repairs, engine diagnostics, and provide honest advice
                 so your vehicle stays safe and reliable.
             </p>
-        </div>
-
-        <div class="contact">
-            <h3>Contact & Opening Hours</h3>
-            <div class="row">
-                <!-- address icon -->
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-                <div class="text">Unit 1, 6 Bramley Street, Dandenong, VIC, Australia, Victoria</div>
-            </div>
-
-            <div class="row">
-                <!-- phone icon -->
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C9.16 21 3 14.84 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z"/></svg>
-                <div class="text"><a href="tel:0481972097">0481 972 097</a></div>
-            </div>
-
-            <div class="row">
-                <!-- hours icon -->
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 1a11 11 0 1011 11A11.013 11.013 0 0012 1zm1 12.59V7a1 1 0 10-2 0v6a1 1 0 00.29.71l3 3a1 1 0 001.41-1.41z"/></svg>
-                <div class="text">
-                    <strong>Opening Hours</strong>
-                    <div>Mon - Fri: 8:00 AM – 5:00 PM</div>
-                    <div>Sat: 9:00 AM – 1:00 PM</div>
-                    <div>Sun: Closed</div>
-                </div>
-            </div>
         </div>
     </div>
 </section>
@@ -473,9 +519,12 @@ window.addEventListener("scroll", function() {
           <img class="footer-logo" src="Images/Logo/croos_logo.jpg" alt="Croos Logo">
         
         <div class="footer-left">
-            <h3>Croos Automotive</h3>
-            <p class="footer-contact">Unit 1, 6 Bramley Street, Dandenong, VIC, Australia</p>
-            <p class="footer-contact">Phone: <a href="tel:0481972097">0481 972 097</a></p>
+            <h2>Croos Automotive</h2>
+            <p class="footer-contact">Unit 1, 6 Bramley Street </p>
+            <p class="footer-contact">Dandenong, VIC, Australia</p>
+            <br>
+            <p class="footer-contact">Tel : <a href="tel:0481972097">0481 972 097</a></p>
+            <br>
         </div>
 
         <div class="footer-right">
@@ -504,10 +553,10 @@ window.addEventListener("scroll", function() {
 /* Footer styles */
 .site-footer { background: linear-gradient(90deg, #a7d8ff 0%, #0077c2 100%); color: #fff; padding: 28px 20px 16px; }
 .footer-inner { display:flex; justify-content:space-around; align-items:flex-start; gap:20px; max-width:1100px; margin:0 auto; }
-.footer-logo { width:64px; height:64px; object-fit:contain; border-radius:6px; margin-bottom:8px; }
+.footer-logo { width:96px; height:96px;  border-radius:6px; margin-bottom:8px; }
 
 @media (max-width:700px) {
-    .footer-logo { width:56px; height:56px; margin:0 auto 8px; }
+    .footer-logo { width:72px; height:72px; margin:0 auto 8px; }
 }
 .footer-left h3 { margin:0 0 8px 0; }
 .footer-contact { margin:6px 0; color: #fff; }
