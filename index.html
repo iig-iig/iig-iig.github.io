@@ -1,759 +1,1081 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Croos Automotive</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Croos Automotive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-/* HEADER */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to right, #ffffff, #000000);
-    display: flex;
-    align-items: center;
-    padding: 0 40px;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to right, #ffffff, #000000);
+      display: flex;
+      align-items: center;
+      padding: 0 40px;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
 
-/* SHRINK HEADER */
-header.shrink {
-    height: 65px;
-    padding: 0 30px;
-}
+    /* SHRINK HEADER */
+    header.shrink {
+      height: 65px;
+      padding: 0 30px;
+    }
 
-/* LOGO */
-.logo img {
-    height: 60px;
-    transition: all 0.3s ease;
-}
+    /* LOGO */
+    .logo img {
+      height: 60px;
+      transition: all 0.3s ease;
+    }
 
-header.shrink .logo img {
-    height: 40px;
-}
+    header.shrink .logo img {
+      height: 40px;
+    }
 
-/* MENU */
-nav {
-    margin-left: auto;
-}
+    /* MENU */
+    nav {
+      margin-left: auto;
+    }
 
-nav ul {
-    list-style: none;
-    display: flex;
-}
+    nav ul {
+      list-style: none;
+      display: flex;
+    }
 
-nav ul li {
-    margin-left: 30px;
-}
+    nav ul li {
+      margin-left: 30px;
+    }
 
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    transition: font-size 0.3s ease;
-}
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      transition: font-size 0.3s ease;
+    }
 
-/* NAV TOGGLE (hamburger) */
-.nav-toggle {
-    display: none;
-    background: transparent;
-    border: 0;
-    cursor: pointer;
-    padding: 8px;
-    margin-left: 12px;
-}
-.nav-toggle .bar { display:block; width:22px; height:3px; background:#fff; margin:4px 0; transition: transform .2s ease, opacity .2s ease; }
-.nav-toggle.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle.open .bar:nth-child(2) { opacity: 0; }
-.nav-toggle.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* NAV TOGGLE (hamburger) */
+    .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      padding: 8px;
+      margin-left: 12px;
+    }
 
-header.shrink nav ul li a {
-    font-size: 16px;
-}
+    .nav-toggle .bar {
+      display: block;
+      width: 22px;
+      height: 3px;
+      background: #fff;
+      margin: 4px 0;
+      transition: transform .2s ease, opacity .2s ease;
+    }
 
-/* HERO SECTION */
-.hero {
-    height: 100vh;
-    
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-    margin-top: 100px; /* keep content below fixed header */
-    display: flex;
-    padding-top: 0; /* padding moved to margin-top to avoid extra space inside hero */
-}
+    .nav-toggle.open .bar:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
 
-/* SPLIT LAYOUT */
-.hero-left,
-.hero-right {
-    width: 50%;
-}
+    .nav-toggle.open .bar:nth-child(2) {
+      opacity: 0;
+    }
 
-/* RIGHT TEXT */
-.hero-right {
-    display: flex;
-    align-items: center;
-    padding: 60px;
-}
+    .nav-toggle.open .bar:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
-.hero-right h1 {
-    color: white;
-    font-size: 56px;
-    line-height: 1.2;
-}
+    header.shrink nav ul li a {
+      font-size: 16px;
+    }
 
-/* active nav link */
-.nav-link.active { border-bottom: 2px solid #fff; padding-bottom: 4px; }
+    /* HERO SECTION */
+    .hero {
+      height: 100vh;
 
-/* EXTRA SECTION (SCROLL DEMO) */
-.section {
-    height: 100vh;
-    background: #f4f4f4;
-    padding: 100px;
-}
+      background-repeat: no-repeat;
+      background-size: 100% auto;
+      margin-top: 100px;
+      /* keep content below fixed header */
+      display: flex;
+      padding-top: 0;
+      /* padding moved to margin-top to avoid extra space inside hero */
+    }
 
-/* SOCIAL RIBBON */
-.social-ribbon {
-    background: rgba(0,0,0,0.6);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 0;
-}
-.social-ribbon .icons {
-    display: flex;
-    gap: 18px;
-}
-.social-ribbon a {
-    color: white;
-    text-decoration: none;
-    width: 36px;
-    height: 36px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    transition: transform 0.15s ease, background 0.15s ease;
-}
-.social-ribbon a:hover { transform: translateY(-3px); }
-.social-ribbon svg { width: 22px; height: 22px; display:block; }
+    /* SPLIT LAYOUT */
+    .hero-left,
+    .hero-right {
+      width: 50%;
+    }
 
-/* ABOUT US SECTION */
-.about {
-    display: flex;
-    gap: 40px;
-    padding: 80px 100px;
-    align-items: flex-start;
-    background: #ffffff;
-}
-.about .map {
-    flex: 1 1 100%;
-    min-height: 320px;
-    background: #e9e9e9;
-    border-radius: 8px;
-    overflow: hidden;
-}
-.about .details {
-    flex: 1 1 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-.about .details .what {
-    background: #f7f7f7;
-    padding: 24px;
-    border-radius: 8px;
-}
-.about .details .contact {
-    background: #f1f1f1;
-    padding: 24px;
-    border-radius: 8px;
-}
-.about h2 { margin-bottom: 12px; }
-.contact .phone { font-weight: bold; font-size: 18px; margin-top: 8px; }
-.contact .hours { margin-top: 12px; }
+    /* RIGHT TEXT */
+    .hero-right {
+      display: flex;
+      align-items: center;
+      padding: 60px;
+    }
 
-/* contact icon rows */
-.contact .row { display:flex; align-items:flex-start; gap:10px; margin-top:8px; }
-.contact .row svg { width:18px; height:18px; flex:0 0 18px; margin-top:2px; color:#333; }
-.contact .row .text { font-size:15px; color:#222; }
+    .hero-right h1 {
+      color: white;
+      font-size: 56px;
+      line-height: 1.2;
+    }
+
+    /* active nav link */
+    .nav-link.active {
+      border-bottom: 2px solid #fff;
+      padding-bottom: 4px;
+    }
+
+    /* EXTRA SECTION (SCROLL DEMO) */
+    .section {
+      height: 100vh;
+      background: #f4f4f4;
+      padding: 100px;
+    }
+
+    /* SOCIAL RIBBON */
+    .social-ribbon {
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 0;
+    }
+
+    .social-ribbon .icons {
+      display: flex;
+      gap: 18px;
+    }
+
+    .social-ribbon a {
+      color: white;
+      text-decoration: none;
+      width: 36px;
+      height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      transition: transform 0.15s ease, background 0.15s ease;
+    }
+
+    .social-ribbon a:hover {
+      transform: translateY(-3px);
+    }
+
+    .social-ribbon svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    /* ABOUT US SECTION */
+    .about {
+      display: flex;
+      gap: 40px;
+      padding: 80px 100px;
+      align-items: flex-start;
+      background: #ffffff;
+    }
+
+    .about .map {
+      flex: 1 1 100%;
+      min-height: 320px;
+      background: #e9e9e9;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .about .details {
+      flex: 1 1 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .about .details .what {
+      background: #f7f7f7;
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    .about .details .contact {
+      background: #f1f1f1;
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    .about h2 {
+      margin-bottom: 12px;
+    }
+
+    .contact .phone {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 8px;
+    }
+
+    .contact .hours {
+      margin-top: 12px;
+    }
+
+    /* contact icon rows */
+    .contact .row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .contact .row svg {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      margin-top: 2px;
+      color: #333;
+    }
+
+    .contact .row .text {
+      font-size: 15px;
+      color: #222;
+    }
 
 
-@media (max-width: 900px) {
-    /* header smaller */
-    header { height: 80px; padding: 0 20px; }
-    header.shrink { height: 65px; padding: 0 16px; }
+    @media (max-width: 900px) {
 
-    /* navigation stacks */
-    nav ul { gap: 14px; }
-    nav ul li { margin-left: 18px; }
-    nav ul li a { font-size: 16px; }
+      /* header smaller */
+      header {
+        height: 80px;
+        padding: 0 20px;
+      }
 
-    /* hero adapts */
-    .hero { height: 70vh; margin-top: 80px; }
-    .hero-left { display: none; }
-    .hero-right { padding: 28px; }
-    .hero-right h1 { font-size: 36px; }
+      header.shrink {
+        height: 65px;
+        padding: 0 16px;
+      }
 
-    /* social ribbon */
-    .social-ribbon { padding: 10px 0; }
-    .social-ribbon .icons { gap: 12px; }
+      /* navigation stacks */
+      nav ul {
+        gap: 14px;
+      }
 
-    /* about section stacks with smaller padding */
-    .about { flex-direction: column; padding: 40px; }
-    .about .details { width: 100%; }
-    .about .map { min-height: 260px; width: 100%; }
+      nav ul li {
+        margin-left: 18px;
+      }
 
-    /* extra content padding */
-    .section { padding: 60px 24px; height: auto; }
-}
+      nav ul li a {
+        font-size: 16px;
+      }
 
-@media (max-width: 480px) {
-    /* header compact */
-    header { height: 70px; padding: 0 14px; }
-    header.shrink { height: 65px; padding: 0 12px; }
+      /* hero adapts */
+      .hero {
+        height: 70vh;
+        margin-top: 80px;
+      }
 
-    /* nav: wrap to multiple lines and center */
-    nav { margin-left: 0; }
-    nav ul { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 10px; padding-top: 8px; }
-    nav ul li { margin-left: 0; }
-    nav ul li a { font-size: 14px; }
+      .hero-left {
+        display: none;
+      }
 
-    /* hero for small phones */
-    .hero { height: 30vh; margin-top: 70px; }
-    .hero-right { padding: 18px; }
-    .hero-right h1 { font-size: 26px; line-height: 1.15; }
+      .hero-right {
+        padding: 28px;
+      }
 
-    /* social ribbon smaller */
-    .social-ribbon { padding: 8px 0; }
-    .social-ribbon a { width: 32px; height: 32px; }
-    .social-ribbon svg { width: 18px; height: 18px; }
+      .hero-right h1 {
+        font-size: 36px;
+      }
 
-    /* About adjustments */
-    .about { padding: 20px; gap: 18px; }
-    .about .map { min-height: 200px; }
-    .about .details .what, .about .details .contact { padding: 16px; }
+      /* social ribbon */
+      .social-ribbon {
+        padding: 10px 0;
+      }
 
-    /* contact rows smaller text */
-    .contact .row .text { font-size: 14px; }
+      .social-ribbon .icons {
+        gap: 12px;
+      }
 
-    /* general section spacing */
-    .section { padding: 36px 16px; height: auto; }
-}
+      /* about section stacks with smaller padding */
+      .about {
+        flex-direction: column;
+        padding: 40px;
+      }
+
+      .about .details {
+        width: 100%;
+      }
+
+      .about .map {
+        min-height: 260px;
+        width: 100%;
+      }
+
+      /* extra content padding */
+      .section {
+        padding: 60px 24px;
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      /* header compact */
+      header {
+        height: 70px;
+        padding: 0 14px;
+      }
+
+      header.shrink {
+        height: 65px;
+        padding: 0 12px;
+      }
+
+      /* nav: wrap to multiple lines and center */
+      nav {
+        margin-left: 0;
+      }
+
+      nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        padding-top: 8px;
+      }
+
+      nav ul li {
+        margin-left: 0;
+      }
+
+      nav ul li a {
+        font-size: 14px;
+      }
+
+      /* hero for small phones */
+      .hero {
+        height: 30vh;
+        margin-top: 70px;
+      }
+
+      .hero-right {
+        padding: 18px;
+      }
+
+      .hero-right h1 {
+        font-size: 26px;
+        line-height: 1.15;
+      }
+
+      /* social ribbon smaller */
+      .social-ribbon {
+        padding: 8px 0;
+      }
+
+      .social-ribbon a {
+        width: 32px;
+        height: 32px;
+      }
+
+      .social-ribbon svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* About adjustments */
+      .about {
+        padding: 20px;
+        gap: 18px;
+      }
+
+      .about .map {
+        min-height: 200px;
+      }
+
+      .about .details .what,
+      .about .details .contact {
+        padding: 16px;
+      }
+
+      /* contact rows smaller text */
+      .contact .row .text {
+        font-size: 14px;
+      }
+
+      /* general section spacing */
+      .section {
+        padding: 36px 16px;
+        height: auto;
+      }
+    }
 
 
-* {
-  box-sizing: border-box;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial;
-}
+    body {
+      margin: 0;
+      font-family: Arial;
+    }
 
-.header {
-  text-align: center;
-  padding: 32px;
-}
+    .header {
+      text-align: center;
+      padding: 32px;
+    }
 
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
+    .row {
+      display: -ms-flexbox;
+      /* IE10 */
+      display: flex;
+      -ms-flex-wrap: wrap;
+      /* IE10 */
+      flex-wrap: wrap;
+      padding: 0 4px;
+    }
 
-/* Create four equal columns that sits next to each other */
-.column {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
-  max-width: 25%;
-  padding: 0 4px;
-}
+    /* Create four equal columns that sits next to each other */
+    .column {
+      -ms-flex: 25%;
+      /* IE10 */
+      flex: 25%;
+      max-width: 25%;
+      padding: 0 4px;
+    }
 
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
-  width: 100%;
-}
+    .column img {
+      margin-top: 8px;
+      vertical-align: middle;
+      width: 100%;
+    }
 
-/* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 800px) {
-  .column {
-    -ms-flex: 50%;
-    flex: 50%;
-    max-width: 50%;
-  }
-}
+    /* Responsive layout - makes a two column-layout instead of four columns */
+    @media screen and (max-width: 800px) {
+      .column {
+        -ms-flex: 50%;
+        flex: 50%;
+        max-width: 50%;
+      }
+    }
 
-/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .column {
-    -ms-flex: 100%;
-    flex: 100%;
-    max-width: 100%;
-  }
-}
+    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      .column {
+        -ms-flex: 100%;
+        flex: 100%;
+        max-width: 100%;
+      }
+    }
 
-.neon-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    margin-left: 100px;
-}
+    .neon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      margin-left: 100px;
+    }
 
-.neon-text {
-    font-size: 4rem;
-    color: #fff;
-    text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
-    animation: glow 1.5s infinite alternate;
-}
+    .neon-text {
+      font-size: 4rem;
+      color: #fff;
+      text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
+      animation: glow 1.5s infinite alternate;
+    }
 
-@keyframes glow {
-    0% {
+    @keyframes glow {
+      0% {
         text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
-    }
-    100% {
+      }
+
+      100% {
         text-shadow: 0 0 10px #00d4ff, 0 0 20px #00d4ff, 0 0 40px #00d4ff, 0 0 80px #00d4ff, 0 0 160px #00d4ff;
+      }
     }
-}
-@media (max-width: 900px) {
-    .neon-container { margin-left: 20px; }
-    .neon-text { font-size: 1.7rem; }
-}
 
-@media (max-width: 480px) {
-    /* hide neon on very small screens to avoid header overlap */
-    .neon-container { display: grid; }
-     .neon-text { font-size: 1.4rem; }
-}
+    @media (max-width: 900px) {
+      .neon-container {
+        margin-left: 20px;
+      }
+
+      .neon-text {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      /* hide neon on very small screens to avoid header overlap */
+      .neon-container {
+        display: grid;
+      }
+
+      .neon-text {
+        font-size: 1.4rem;
+      }
+    }
 
 
 
-/* car brand slider */
+    /* car brand slider */
 
-.slider_container {
-  position: relative;
-  /* width: 60%;
+    .slider_container {
+      position: relative;
+      /* width: 60%;
   height: 40rem; */
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: hidden;
-  height: 90px;
-}
-.slider {
-  position: relative;
-  /* width = number_of_slides * 100% (3 slides -> 300%) */
-  width: 300%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  animation: 10s cubic-bezier(1, 0.95, 0.365, 1) sliding infinite;
-}
-.slide {
-  position: relative;
-  min-width: 100%;
-  height: 100%;
-}
-.slide img {
-  width: 100%;
-  height: 100%;
-}
-.slide .caption {
-  position: absolute;
-  left: 0;
-  bottom: 5%;
-  font-size: 5rem;
-  font-weight: 600;
-  color: white;
-  text-transform: capitalize;
-  background: rgba(0, 0, 0, 0.348);
-  backdrop-filter: blur(10px);
-  padding: 1rem 5rem;
-  border-radius: 0 2rem 2rem 0;
-}
-.slide.one {
-  background: rgb(182, 19, 109);
-}
-.slide.two {
-  background: rgb(255, 64, 64);
-}
- .slide.three {
-  background: rgb(11, 173, 188);
-}/*
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      overflow: hidden;
+      height: 90px;
+    }
+
+    .slider {
+      position: relative;
+      /* width = number_of_slides * 100% (3 slides -> 300%) */
+      width: 300%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      animation: 10s cubic-bezier(1, 0.95, 0.365, 1) sliding infinite;
+    }
+
+    .slide {
+      position: relative;
+      min-width: 100%;
+      height: 100%;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide .caption {
+      position: absolute;
+      left: 0;
+      bottom: 5%;
+      font-size: 5rem;
+      font-weight: 600;
+      color: white;
+      text-transform: capitalize;
+      background: rgba(0, 0, 0, 0.348);
+      backdrop-filter: blur(10px);
+      padding: 1rem 5rem;
+      border-radius: 0 2rem 2rem 0;
+    }
+
+    .slide.one {
+      background: rgb(182, 19, 109);
+    }
+
+    .slide.two {
+      background: rgb(255, 64, 64);
+    }
+
+    .slide.three {
+      background: rgb(11, 173, 188);
+    }
+
+    /*
 .slide.four {
   background: rgb(11, 188, 14);
 }
 .slide.five {
   background: rgb(173, 11, 188);
 } */
-@keyframes sliding {
-  0% {
-    transform: translateX(0%);
-  }
-  /* For 3 slides we only need to move from 0% -> -100% -> -200% */
-  0%, 30% {
-    transform: translateX(0%);
-  }
-  33%, 66% {
-    transform: translateX(-100%);
-  }
-  69%, 100% {
-    transform: translateX(-200%);
-  }
-}
+    @keyframes sliding {
+      0% {
+        transform: translateX(0%);
+      }
 
+      /* For 3 slides we only need to move from 0% -> -100% -> -200% */
+      0%,
+      30% {
+        transform: translateX(0%);
+      }
 
-</style>
+      33%,
+      66% {
+        transform: translateX(-100%);
+      }
+
+      69%,
+      100% {
+        transform: translateX(-200%);
+      }
+    }
+  </style>
 
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header id="header">
+  <!-- HEADER -->
+  <header id="header">
     <div class="logo">
-        <!-- Replace logo.png with your logo -->
-        <a href="#home">
-            <img src="Images/Logo/croos_logo.jpg" alt="Logo">
-        </a>
+      <!-- Replace logo.png with your logo -->
+      <a href="#home">
+        <img src="Images/Logo/croos_logo.jpg" alt="Logo">
+      </a>
     </div>
-<div class="neon-container">
-    <h1 class="neon-text">0481 972 097</h1>
-</div>
+    <div class="neon-container">
+      <h1 class="neon-text">0481 972 097</h1>
+    </div>
     <nav>
-        <ul>
-            <li><a href="#home" class="nav-link">Home</a></li>
-            <li><a href="#about-us" class="nav-link">About Us</a></li>
-            <li><a href="#work" class="nav-link">Work We Do</a></li>
-            <li><a href="#partners" class="nav-link">Partners</a></li>
-        </ul>
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about-us" class="nav-link">About Us</a></li>
+        <li><a href="#work" class="nav-link">Work We Do</a></li>
+        <li><a href="#partners" class="nav-link">Partners</a></li>
+      </ul>
     </nav>
-        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-    </header>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
 
-<!-- HERO SECTION -->
-<section id="home" class="hero" style="background-image: url('Images/landing.png');">
+  <!-- HERO SECTION -->
+  <section id="home" class="hero" style="background-image: url('Images/landing.png');">
     <div class="hero-left">
-      </div>
+    </div>
 
     <div class="hero-right">
-        <h1>
-            Driving Innovation<br>
-            In Automotive<br>
-            Excellence
-        </h1>
+      <h1>
+        Driving Innovation<br>
+        In Automotive<br>
+        Excellence
+      </h1>
     </div>
-</section>
+  </section>
 
-<!-- SOCIAL RIBBON -->
-<section class="social-ribbon" aria-label="Follow us on social media">
+  <!-- SOCIAL RIBBON -->
+  <section class="social-ribbon" aria-label="Follow us on social media">
     <div class="icons">
-        <!-- YouTube -->
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M23.499 6.203a2.996 2.996 0 0 0-2.11-2.12C19.459 3.5 12 3.5 12 3.5s-7.459 0-9.389.583A2.996 2.996 0 0 0 .5 6.203 31.61 31.61 0 0 0 0 12a31.61 31.61 0 0 0 .5 5.797 2.996 2.996 0 0 0 2.111 2.12C4.541 20.5 12 20.5 12 20.5s7.459 0 9.389-.583a2.996 2.996 0 0 0 2.11-2.12A31.61 31.61 0 0 0 24 12a31.61 31.61 0 0 0-.501-5.797zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
-        </a>
+      <!-- YouTube -->
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path
+            d="M23.499 6.203a2.996 2.996 0 0 0-2.11-2.12C19.459 3.5 12 3.5 12 3.5s-7.459 0-9.389.583A2.996 2.996 0 0 0 .5 6.203 31.61 31.61 0 0 0 0 12a31.61 31.61 0 0 0 .5 5.797 2.996 2.996 0 0 0 2.111 2.12C4.541 20.5 12 20.5 12 20.5s7.459 0 9.389-.583a2.996 2.996 0 0 0 2.11-2.12A31.61 31.61 0 0 0 24 12a31.61 31.61 0 0 0-.501-5.797zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+        </svg>
+      </a>
 
-        <!-- Facebook -->
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M22 12.073C22 6.507 17.523 2 12 2S2 6.507 2 12.073C2 17.093 5.656 21.128 10.438 21.878v-6.988H7.898v-2.817h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.462h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.817h-2.33V21.88C18.344 21.128 22 17.093 22 12.073z"/>
-            </svg>
-        </a>
+      <!-- Facebook -->
+      <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path
+            d="M22 12.073C22 6.507 17.523 2 12 2S2 6.507 2 12.073C2 17.093 5.656 21.128 10.438 21.878v-6.988H7.898v-2.817h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.462h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.817h-2.33V21.88C18.344 21.128 22 17.093 22 12.073z" />
+        </svg>
+      </a>
 
-        <!-- Instagram -->
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zM12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm0 2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM17.5 6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/>
-            </svg>
-        </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path
+            d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zM12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm0 2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM17.5 6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z" />
+        </svg>
+      </a>
 
-        <!-- TikTok (simple mark) -->
-        <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M16 3v7.09A4.5 4.5 0 0 1 12.5 9c-2.485 0-4.5 2.015-4.5 4.5S10.015 18 12.5 18A4.5 4.5 0 0 0 17 13.5V6h2V3h-3z"/>
-            </svg>
-        </a>
+      <!-- TikTok (simple mark) -->
+      <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path
+            d="M16 3v7.09A4.5 4.5 0 0 1 12.5 9c-2.485 0-4.5 2.015-4.5 4.5S10.015 18 12.5 18A4.5 4.5 0 0 0 17 13.5V6h2V3h-3z" />
+        </svg>
+      </a>
     </div>
-</section>
+  </section>
 
 
-<!-- ABOUT US -->
-<section class="about" id="about-us">
+  <!-- ABOUT US -->
+  <section class="about" id="about-us">
     <div class="map" aria-hidden="false">
-        <!-- Google Maps embed for Unit 1 6 Bramley Street, Dandenong, VIC -->
-        <iframe
-            width="100%"
-            height="100%"
-            frameborder="0"
-            style="border:0; min-height:320px;"
-            src="https://www.google.com/maps?q=Unit%201%2C%206%20Bramley%20Street%2C%20Dandenong%2C%20VIC%2C%20Australia&output=embed"
-            allowfullscreen="" aria-label="Map showing our location"></iframe>
+      <!-- Google Maps embed for Unit 1 6 Bramley Street, Dandenong, VIC -->
+      <iframe width="100%" height="100%" frameborder="0" style="border:0; min-height:320px;"
+        src="https://www.google.com/maps?q=Unit%201%2C%206%20Bramley%20Street%2C%20Dandenong%2C%20VIC%2C%20Australia&output=embed"
+        allowfullscreen="" aria-label="Map showing our location"></iframe>
     </div>
 
     <div class="details">
-        <div class="contact">
-            <h3>Contact & Opening Hours</h3>
-            <div class="row"></div>
-            
-            <div class="row"></div>
-            <div class="row">
-                <!-- address icon -->
-                <div class="text"> <p>
-                <svg viewBox="0 0 24 24" fill="#e91717" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-                <strong>  Unit 1, 6 Bramley Street, Dandenong, VIC, Australia, Victoria</strong></div>
-           </p> </div>
+      <div class="contact">
+        <h3>Contact & Opening Hours</h3>
+        <div class="row"></div>
 
-            <div class="row"></div>
-            <div class="row">
-                <!-- phone icon -->
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C9.16 21 3 14.84 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z"/></svg>
-                <div class="text"><a href="tel:0481972097">0481 972 097</a></div>
-                <br>
-            </div>
-
-            <div class="row"></div>
-            <div class="row">
-                <!-- hours icon -->
-                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 1a11 11 0 1011 11A11.013 11.013 0 0012 1zm1 12.59V7a1 1 0 10-2 0v6a1 1 0 00.29.71l3 3a1 1 0 001.41-1.41z"/></svg>
-                <div class="text">
-                    <strong>Opening Hours</strong><p><br></p>
-                    <div>Monday - Friday: 8:00 AM – 5:00 PM</div><br>
-                    <div>Saturday: 9:00 AM – 1:00 PM</div><br>
-                    <div>Sunday: Closed</div>
-                </div>
-            </div>
+        <div class="row"></div>
+        <div class="row">
+          <!-- address icon -->
+          <div class="text">
+            <p>
+              <svg viewBox="0 0 24 24" fill="#e91717" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path
+                  d="M12 2C8.14 2 5 5.14 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.86-3.14-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+              </svg>
+              <strong> Unit 1, 6 Bramley Street, Dandenong, VIC, Australia, Victoria</strong>
+          </div>
+          </p>
         </div>
+
+        <div class="row"></div>
+        <div class="row">
+          <!-- phone icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C9.16 21 3 14.84 3 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z" />
+          </svg>
+          <div class="text"><a href="tel:0481972097">0481 972 097</a></div>
+          <br>
+        </div>
+
+        <div class="row"></div>
+        <div class="row">
+          <!-- hours icon -->
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M12 1a11 11 0 1011 11A11.013 11.013 0 0012 1zm1 12.59V7a1 1 0 10-2 0v6a1 1 0 00.29.71l3 3a1 1 0 001.41-1.41z" />
+          </svg>
+          <div class="text">
+            <strong>Opening Hours</strong>
+            <p><br></p>
+            <div>Monday - Friday: 8:00 AM – 5:00 PM</div><br>
+            <div>Saturday: 9:00 AM – 1:00 PM</div><br>
+            <div>Sunday: Closed</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <hr>
     <div>
       <div class="what">
-            <h2>About Us</h2>
-            <p>
-                Our mechanics specialise in vehicle diagnostics, servicing and repairs, performance tuning, and electrical work.
-                We handle scheduled maintenance, brake and suspension repairs, engine diagnostics, and provide honest advice
-                so your vehicle stays safe and reliable.
-            </p>
-        </div>
+        <h2>About Us</h2>
+        <p>
+          We are a <strong>Sri Lankan–owned</strong> automotive service company, widely recognised as a leading specialist for European
+          vehicles, particularly BMW and Mercedes-Benz. Our reputation is built on precision workmanship, advanced
+          technology, and a deep understanding of high-performance engineering.
+        </p>
+        <p>
+          All our mechanics are highly skilled experts with <strong>over 15 years of hands-on experience</strong>, delivering exceptional
+          service not only for European brands but also for Japanese and other vehicle makes with the same level of
+          excellence.
+        </p>
+        <p>
+          We specialise in advanced diagnostics, servicing and repairs, performance tuning, and complex electrical
+          systems. From scheduled maintenance to brake, suspension, and engine diagnostics, we provide honest,
+          professional advice to ensure your vehicle remains <strong>safe, refined, and reliable</strong>.
+        </p>
+      </div>
     </div>
-</section>
+  </section>
 
-<hr>
+  <hr>
 
-<section class="slider_container">
-      <section class="slider">
-        <div class="slide one">
-          <img src="Images/carBrands/carBrands1.jpg" alt="" />
-        </div>
-        <div class="slide two">
-          <img src="Images/carBrands/carBrands2.jpg" alt="" />
-        </div>
-         <div class="slide three">
-          <img src="Images/carBrands/carBrands3.jpg" alt="" />
-        </div>
-      </section>
+  <section class="slider_container">
+    <section class="slider">
+      <div class="slide one">
+        <img src="Images/carBrands/carBrands1.jpg" alt="" />
+      </div>
+      <div class="slide two">
+        <img src="Images/carBrands/carBrands2.jpg" alt="" />
+      </div>
+      <div class="slide three">
+        <img src="Images/carBrands/carBrands3.jpg" alt="" />
+      </div>
     </section>
+  </section>
 
 
-<!-- WORK SECTION (example) -->
-<section id="work" class="section" style="height: auto;">
-    
-<!-- Photo Grid -->
-<div class="row"> 
-  <div class="column">
-    <img src="Images/galary/1.png" style="width:100%">
-    <img src="Images/galary/2.png" style="width:100%">
-    <img src="Images/galary/3.png" style="width:100%">
-    <!-- <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%">
+  <!-- WORK SECTION (example) -->
+  <section id="work" class="section" style="height: auto;">
+
+    <!-- Photo Grid -->
+    <div class="row">
+      <div class="column">
+        <img src="Images/galary/1.png" style="width:100%">
+        <img src="Images/galary/2.png" style="width:100%">
+        <img src="Images/galary/3.png" style="width:100%">
+        <!-- <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/nature.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/mist.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%"> -->
-  </div>
-  <div class="column">
-    <img src="Images/galary/4.png" style="width:100%">
-    <img src="Images/galary/5.png" style="width:100%">
-    <img src="Images/galary/6.png" style="width:100%">
-    <!-- <img src="https://www.w3schools.com/w3images/rocks.jpg" style="width:100%">
+      </div>
+      <div class="column">
+        <img src="Images/galary/4.png" style="width:100%">
+        <img src="Images/galary/5.png" style="width:100%">
+        <img src="Images/galary/6.png" style="width:100%">
+        <!-- <img src="https://www.w3schools.com/w3images/rocks.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/underwater.jpg" style="width:100%"> -->
-  </div>  
-  <div class="column">
-    <img src="Images/galary/8.png" style="width:100%">
-    <img src="Images/galary/9.png" style="width:100%">
-    <img src="Images/galary/10.png" style="width:100%">
-    <img src="Images/galary/7.png" style="width:100%">
-    <!-- <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%">
+      </div>
+      <div class="column">
+        <img src="Images/galary/8.png" style="width:100%">
+        <img src="Images/galary/9.png" style="width:100%">
+        <img src="Images/galary/10.png" style="width:100%">
+        <img src="Images/galary/7.png" style="width:100%">
+        <!-- <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/nature.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/mist.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/paris.jpg" style="width:100%"> -->
-  </div>
-  <div class="column">
-    <img src="Images/galary/11.png" style="width:100%">
-    <img src="Images/galary/12.png" style="width:100%">
-    <img src="Images/galary/13.png" style="width:100%">
-    <img src="Images/galary/14.png" style="width:100%">
-    <!-- <img src="https://www.w3schools.com/w3images/rocks.jpg" style="width:100%">
+      </div>
+      <div class="column">
+        <img src="Images/galary/11.png" style="width:100%">
+        <img src="Images/galary/12.png" style="width:100%">
+        <img src="Images/galary/13.png" style="width:100%">
+        <img src="Images/galary/14.png" style="width:100%">
+        <!-- <img src="https://www.w3schools.com/w3images/rocks.jpg" style="width:100%">
     <img src="https://www.w3schools.com/w3images/underwater.jpg" style="width:100%"> -->
-  </div>
-</div>
-</section>
+      </div>
+    </div>
+  </section>
 
-<!-- SCRIPT -->
-<script>
-window.addEventListener("scroll", function() {
-    const header = document.getElementById("header");
-    header.classList.toggle("shrink", window.scrollY > 50);
-});
-</script>
+  <!-- SCRIPT -->
+  <script>
+    window.addEventListener("scroll", function () {
+      const header = document.getElementById("header");
+      header.classList.toggle("shrink", window.scrollY > 50);
+    });
+  </script>
 
 
-<section class="section" style="padding: 10px;height: auto;">
-<!-- FOOTER -->
-<footer class="site-footer">
-    <div class="footer-inner">
-          <img class="footer-logo" src="Images/Logo/croos_logo.jpg" alt="Croos Logo">
-        
+  <section class="section" style="padding: 10px;height: auto;">
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <img class="footer-logo" src="Images/Logo/croos_logo.jpg" alt="Croos Logo">
+
         <div class="footer-left">
-            <h2>Croos Automotive</h2>
-            <p class="footer-contact">Unit 1, 6 Bramley Street </p>
-            <p class="footer-contact">Dandenong, VIC, Australia</p>
-            <br>
-            <p class="footer-contact">Tel : <a href="tel:0481972097">0481 972 097</a></p>
-            <br>
+          <h2>Croos Automotive</h2>
+          <p class="footer-contact">Unit 1, 6 Bramley Street </p>
+          <p class="footer-contact">Dandenong, VIC, Australia</p>
+          <br>
+          <p class="footer-contact">Tel : <a href="tel:0481972097">0481 972 097</a></p>
+          <br>
         </div>
 
         <div class="footer-right">
-            <div class="footer-social">
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.073C22 6.507 17.523 2 12 2S2 6.507 2 12.073C2 17.093 5.656 21.128 10.438 21.878v-6.988H7.898v-2.817h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.462h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.817h-2.33V21.88C18.344 21.128 22 17.093 22 12.073z"/></svg>
-                </a>
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zM12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm0 2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM17.5 6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/></svg>
-                </a>
-                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23.499 6.203a2.996 2.996 0 0 0-2.11-2.12C19.459 3.5 12 3.5 12 3.5s-7.459 0-9.389.583A2.996 2.996 0 0 0 .5 6.203 31.61 31.61 0 0 0 0 12a31.61 31.61 0 0 0 .5 5.797 2.996 2.996 0 0 0 2.111 2.12C4.541 20.5 12 20.5 12 20.5s7.459 0 9.389-.583a2.996 2.996 0 0 0 2.11-2.12A31.61 31.61 0 0 0 24 12a31.61 31.61 0 0 0-.501-5.797zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-                <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M16 3v7.09A4.5 4.5 0 0 1 12.5 9c-2.485 0-4.5 2.015-4.5 4.5S10.015 18 12.5 18A4.5 4.5 0 0 0 17 13.5V6h2V3h-3z"/></svg>
-                </a>
-            </div>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M22 12.073C22 6.507 17.523 2 12 2S2 6.507 2 12.073C2 17.093 5.656 21.128 10.438 21.878v-6.988H7.898v-2.817h2.54V9.845c0-2.507 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.462h-1.26c-1.243 0-1.63.771-1.63 1.562v1.875h2.773l-.443 2.817h-2.33V21.88C18.344 21.128 22 17.093 22 12.073z" />
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zM12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm0 2a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zM17.5 6a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z" />
+              </svg>
+            </a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M23.499 6.203a2.996 2.996 0 0 0-2.11-2.12C19.459 3.5 12 3.5 12 3.5s-7.459 0-9.389.583A2.996 2.996 0 0 0 .5 6.203 31.61 31.61 0 0 0 0 12a31.61 31.61 0 0 0 .5 5.797 2.996 2.996 0 0 0 2.111 2.12C4.541 20.5 12 20.5 12 20.5s7.459 0 9.389-.583a2.996 2.996 0 0 0 2.11-2.12A31.61 31.61 0 0 0 24 12a31.61 31.61 0 0 0-.501-5.797zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16 3v7.09A4.5 4.5 0 0 1 12.5 9c-2.485 0-4.5 2.015-4.5 4.5S10.015 18 12.5 18A4.5 4.5 0 0 0 17 13.5V6h2V3h-3z" />
+              </svg>
+            </a>
+          </div>
         </div>
-    </div>
-    <hr/>
-    <div class="footer-bottom">&copy; <span id="year"></span> Croos Automotive. All rights reserved.</div>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-</footer>
-</section>
-<style>
-/* Footer styles */
-.site-footer { background: linear-gradient(90deg, #a7d8ff 0%, #0077c2 100%); color: #fff; padding: 28px 20px 16px; }
-.footer-inner { display:flex; justify-content:space-around; align-items:flex-start; gap:20px; max-width:1100px; margin:0 auto; }
-.footer-logo { width:96px; height:96px;  border-radius:6px; margin-bottom:8px; }
+      </div>
+      <hr />
+      <div class="footer-bottom">&copy; <span id="year"></span> Croos Automotive. All rights reserved.</div>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+  </section>
+  <style>
+    /* Footer styles */
+    .site-footer {
+      background: linear-gradient(90deg, #a7d8ff 0%, #0077c2 100%);
+      color: #fff;
+      padding: 28px 20px 16px;
+    }
 
-@media (max-width:700px) {
-    .footer-logo { width:72px; height:72px; margin:0 auto 8px; }
-}
-.footer-left h3 { margin:0 0 8px 0; }
-.footer-contact { margin:6px 0; color: #fff; }
-.footer-right { display:flex; align-items:center; gap:12px; }
-.footer-social a { color: #fff; display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center; border-radius:6px; background: rgba(255,255,255,0.06); text-decoration:none; }
-.footer-social svg { width:18px; height:18px; color:#fff; }
-.footer-bottom { text-align:center; margin-top:14px; font-size:13px; opacity:0.95; }
+    .footer-inner {
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-@media (max-width: 700px) {
-    .footer-inner { flex-direction:column; align-items:center; text-align:center; }
-    .footer-right { margin-top:12px; }
-}
+    .footer-logo {
+      width: 96px;
+      height: 96px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
 
-</style>
+    @media (max-width:700px) {
+      .footer-logo {
+        width: 72px;
+        height: 72px;
+        margin: 0 auto 8px;
+      }
+    }
 
-<!-- Mobile nav styles and toggle behavior -->
-<style>
-@media (max-width: 700px) {
-    .nav-toggle { display: block; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); z-index: 1200; }
-    header nav { display: none; position: absolute; right: 12px; top: 100%; background: rgba(0,0,0,0.9); padding: 12px 16px; border-radius: 8px; z-index: 1100; }
-    header nav.open { display: block; }
-    header nav ul { flex-direction: column; }
-    header nav ul li { margin-left: 0; margin-bottom: 8px; }
-}
-</style>
+    .footer-left h3 {
+      margin: 0 0 8px 0;
+    }
 
-<script>
-// Mobile nav toggle
-(function(){
-    const navToggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('header nav');
-    if (navToggle && nav) {
+    .footer-contact {
+      margin: 6px 0;
+      color: #fff;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-social a {
+      color: #fff;
+      display: inline-flex;
+      width: 36px;
+      height: 36px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      text-decoration: none;
+    }
+
+    .footer-social svg {
+      width: 18px;
+      height: 18px;
+      color: #fff;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 13px;
+      opacity: 0.95;
+    }
+
+    @media (max-width: 700px) {
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-right {
+        margin-top: 12px;
+      }
+    }
+  </style>
+
+  <!-- Mobile nav styles and toggle behavior -->
+  <style>
+    @media (max-width: 700px) {
+      .nav-toggle {
+        display: block;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1200;
+      }
+
+      header nav {
+        display: none;
+        position: absolute;
+        right: 12px;
+        top: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 12px 16px;
+        border-radius: 8px;
+        z-index: 1100;
+      }
+
+      header nav.open {
+        display: block;
+      }
+
+      header nav ul {
+        flex-direction: column;
+      }
+
+      header nav ul li {
+        margin-left: 0;
+        margin-bottom: 8px;
+      }
+    }
+  </style>
+
+  <script>
+    // Mobile nav toggle
+    (function () {
+      const navToggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('header nav');
+      if (navToggle && nav) {
         navToggle.addEventListener('click', () => {
-            const isOpen = nav.classList.toggle('open');
-            navToggle.classList.toggle('open', isOpen);
-            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          const isOpen = nav.classList.toggle('open');
+          navToggle.classList.toggle('open', isOpen);
+          navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
         // Close nav when a link is clicked
         nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-            nav.classList.remove('open');
-            navToggle.classList.remove('open');
-            navToggle.setAttribute('aria-expanded','false');
+          nav.classList.remove('open');
+          navToggle.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
         }));
-    }
-})();
+      }
+    })();
 
-// Smooth scroll for nav links
-document.querySelectorAll('a.nav-link').forEach(link => {
-        link.addEventListener('click', function(e){
-                e.preventDefault();
-                const targetId = this.getAttribute('href').slice(1);
-                const target = document.getElementById(targetId);
-                if (target) {
-                        const headerOffset = document.getElementById('header').offsetHeight;
-                        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-                        const offsetPosition = elementPosition - headerOffset + 8;
-                        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-                }
-        });
-});
+    // Smooth scroll for nav links
+    document.querySelectorAll('a.nav-link').forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          const headerOffset = document.getElementById('header').offsetHeight;
+          const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - headerOffset + 8;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }
+      });
+    });
 
-// Highlight nav links when section in view
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('a.nav-link');
+    // Highlight nav links when section in view
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('a.nav-link');
 
-const observerOptions = { root: null, rootMargin: '0px 0px -40% 0px', threshold: 0 };
-const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-                const id = entry.target.getAttribute('id');
-                const link = document.querySelector('a.nav-link[href="#' + id + '"]');
-                if (entry.isIntersecting) {
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        if (link) link.classList.add('active');
-                }
-        });
-}, observerOptions);
+    const observerOptions = { root: null, rootMargin: '0px 0px -40% 0px', threshold: 0 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const link = document.querySelector('a.nav-link[href="#' + id + '"]');
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          if (link) link.classList.add('active');
+        }
+      });
+    }, observerOptions);
 
-sections.forEach(section => observer.observe(section));
-</script>
+    sections.forEach(section => observer.observe(section));
+  </script>
 
 </body>
+
 </html>
